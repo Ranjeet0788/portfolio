@@ -15,5 +15,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO0788 }}
           channelId: live
           projectId: portfolio0788
-          entryPoint: build
-          target: default
+          entryPoint: dist
