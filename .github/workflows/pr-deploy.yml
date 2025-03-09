@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting (PR)
 on:
   pull_request:
     branches:
-      - setup  # This triggers the workflow when a PR is created or updated against the 'main' branch
+      - setup  # This triggers the workflow when a PR is created or updated against the 'setup' branch
 
 jobs:
   build:
@@ -16,19 +16,18 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'  # Set the Node.js version required for your app
-
+        node-version: '20'
     - name: Install dependencies
       run: |
         npm install
 
     - name: Build with Vite
       run: |
-        npm run build  # Runs the Vite build process to generate the 'dist' folder
+        npm run build  # Runs Vite build to generate the 'dist' folder
 
     - name: Deploy to Firebase (Preview Channel)
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
-        firebase_token: ${{ secrets.FIREBASE_TOKEN }}  # Firebase token from GitHub secrets
-        project_id: ${{ secrets.FIREBASE_PROJECT_ID }}  # Firebase Project ID in GitHub secrets
-        channel: pr-${{ github.event.pull_request.number }}  # Creates a unique preview URL for the PR
+        firebase_token: ${{ secrets.FIREBASE_TOKEN }}
+        project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
+        channel: pr-${{ github.event.pull_request.number }}
