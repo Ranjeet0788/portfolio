@@ -27,7 +27,7 @@ jobs:
         npm run build  # Runs the Vite build process to generate the 'dist' folder
 
     - name: Deploy to Firebase (Preview Channel)
-      uses: wzieba/Firebase-Deploy-Action@v0.2.0
+      uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         firebase_token: ${{ secrets.FIREBASE_TOKEN }}  # Firebase token from GitHub secrets
         project_id: ${{ secrets.FIREBASE_PROJECT_ID }}  # Firebase Project ID in GitHub secrets
