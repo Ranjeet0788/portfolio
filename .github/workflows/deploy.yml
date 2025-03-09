@@ -26,6 +26,10 @@ jobs:
       run: |
         npm run build  # Runs Vite build to generate the 'dist' folder
 
+    - name: Display Message Before Deployment
+      run: |
+        echo "Website new build is pushing..."  # Display a message in the GitHub Actions logs    
+
     - name: Deploy to Firebase
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
